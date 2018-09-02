@@ -1,0 +1,28 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build hello",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-std=c++1z", "-g", "-o", "${fileDirname}/a.out", "${file}"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+        },
+        {
+            "label": "execute",
+            "type": "shell",
+            "command": "${fileDirname}/a.out",
+            "group": "test",
+            "args": [
+                ""
+            ]
+        }
+    ]
+}

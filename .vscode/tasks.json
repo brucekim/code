@@ -8,7 +8,12 @@
             "type": "shell",
             "command": "g++",
             "args": [
-                "-std=c++1z", "-g", "-o", "${fileDirname}/a.out", "${file}"
+                "-std=c++1z",
+                "-Werror",
+                "-g",
+                "-o",
+                "${fileDirname}/a.out",
+                "${file}"
             ],
             "group": {
                 "kind": "build",

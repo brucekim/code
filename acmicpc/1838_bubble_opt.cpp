@@ -9,7 +9,8 @@ int getIdx(int arr[], int s, int e, int d) {
     if (s <= e) {
         int m = s + (e - s) / 2;
         if (d == arr[m]) {
-            for (int i = m - 1; i >= s; --i) {
+            //for (int i = m + 1; i < e; ++i) { upper bound
+            for (int i = m - 1; i >= s; --i) {  //lower bound
                 if (d == arr[i]) {
                     m = i;
                 } else {

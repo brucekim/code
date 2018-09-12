@@ -6,19 +6,43 @@ link: https://www.acmicpc.net/problem/2485
 #include <iostream>
 using namespace std;
 
+int getGcd(int a, int b) {
+    return b == 0 ? a : getGcd(b, a % b);
+}
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    int n, gcd, ans = 0;
+    int arr[100'000] = {0};
+
+    cin >> n;
+    for (int i = 0; i < n; ++i) {
+        cin >> arr[i];
+    }
+
+    gcd = arr[1] - arr[0];
+    for (int i = 2; i < n; ++i) {
+        gcd = getGcd(gcd, arr[i] - arr[i - 1]);
+    }
+    for (int i = 1; i < n; ++i) {
+        ans += (arr[i] - arr[i - 1]) / gcd - 1;
+    }
+    cout << ans;
+
+    return 0;
+}
+
+#ifdef COMMENT
+1차 풀이 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     /* init */
-    int n, t1, t2, diff, cnt, gcd;
+    int n, diff, cnt, gcd;
     cnt = gcd = 0;
     int arr[100'000] = {0};
 
     /* gcd */
     auto get_gcd = [](int a, int b) -> int {
-        if (a < b) {
-            std::swap(a, b);
-        }
         int t;
         while (b != 0) {
             t = b;
@@ -53,3 +77,4 @@ int main() {
 
     return 0;
 }
+#endif

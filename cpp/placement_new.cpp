@@ -31,7 +31,7 @@ int main() {
         new (&a[i]) Apple();
     }
 
-    /* 1. it should call destructor explicitly if it call constructor explicitly
+    /* 1. it should call destructor explicitly if it call operator new and placement new
      * 2. then call delete *pointer
      */
 

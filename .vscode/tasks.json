@@ -8,7 +8,7 @@
             "type": "shell",
             "command": "g++",
             "args": [
-                "-std=c++1z",
+                "-std=c++14",
                 "-Werror",
                 "-g",
                 "-o",
@@ -25,6 +25,9 @@
             "type": "shell",
             "command": "${fileDirname}/a.out",
             "group": "test",
+            "options": {
+                "cwd": "${fileDirname}"
+            },
             "args": [
                 ""
             ]

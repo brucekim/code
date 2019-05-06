@@ -12,5 +12,8 @@
     "C_Cpp.errorSquiggles": "Disabled",
     "editor.wordWrap": "on",
     //https://stackoverflow.com/questions/46111834/format-curly-braces-on-same-line-in-c-vscode
-    "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 0}"
+    "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 0}",
+    "vim.easymotion": true,
+    "vim.incsearch": true,
+    "vim.hlsearch": true,
 }

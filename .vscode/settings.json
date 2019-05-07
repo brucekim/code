@@ -7,8 +7,8 @@
         "iostream": "cpp",
         "cstddef": "cpp"
     },
-    "editor.formatOnSave": true,
-    "editor.formatOnType": true,
+    "editor.formatOnSave": false,
+    "editor.formatOnType": false,
     "C_Cpp.errorSquiggles": "Disabled",
     "editor.wordWrap": "on",
     //https://stackoverflow.com/questions/46111834/format-curly-braces-on-same-line-in-c-vscode

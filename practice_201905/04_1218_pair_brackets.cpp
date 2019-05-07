@@ -44,9 +44,7 @@ class xstack {
         if (top != nullptr) {
             return top->v;
         } else {
-            {
-                return errch;
-            }
+            return errch;
         }
     }
 
@@ -56,11 +54,11 @@ class xstack {
 
 bool isLeft(char &c) {
     for (int i = 0; i < 4; ++i) {
-        if (c != left[i]) {
-            return false;
+        if (c == left[i]) {
+            return true;
         }
     }
-    return true;
+    return false;
 }
 int getIndexLeft(char &c) {
     for (int i = 0; i < 4; ++i) {
@@ -73,12 +71,14 @@ int getIndexLeft(char &c) {
 
 bool solve() {
     int n;
-    char c;
+    char str[1000]{0};
+    char c{0};
     bool valid = true;
     xstack stack;
     scanf("%d", &n);
+    scanf("%s", str);
     for (int i = 0; i < n; ++i) {
-        scanf("%c", &c);
+        c = str[i];
         if (valid != true) {
             continue;
         }
@@ -91,7 +91,7 @@ bool solve() {
                 case no.1 empty stack 
                 case no.2 mis-pair
                 */
-            if (pop == errch || pop != right[getIndexLeft(pop)]) {
+            if (pop == errch || c != right[getIndexLeft(pop)]) {
                 valid = false;
             }
         }
@@ -107,17 +107,3 @@ int main() {
     }
     return 0;
 }
-
-/* answer
-
-#1 691
-#2 9092
-#3 8998
-#4 9597
-#5 8757
-#6 10008
-#7 10194
-#8 10188
-#9 9940
-#10 8684
-*/

@@ -26,3 +26,8 @@ to do
 * graph implementation
 * traverse graph - dfs
    */
+#include <cstdio>
+
+int main() {
+    return 0;
+}

@@ -61,7 +61,9 @@ class xstack {
             if (top != nullptr) {
                 node *tmp = top;
                 top = top->prev;
-                top->next = nullptr;
+                if (top != nullptr) {
+                    top->next = nullptr;
+                }
                 delete tmp;
                 --sz;
             }
@@ -99,7 +101,10 @@ class xlist {
                 tail = tail->next;
             }
         }
-        void print() {
+       node* front() {
+            return head;
+        }
+       void print() {
             node *tmp = head;
             while(tmp != nullptr) {
                 printf("%d->", tmp->v);
@@ -130,12 +135,35 @@ class graph {
                 adj[i].print();
             }
         }
-        bool dfs(int s, int d) {
-            visited[s] = true;
-            xstack s;
-            s.push(s);
-            while(!s.isEmpty()) {
+        void initVisited() {
+            for (int i=0; i<cntV; ++i) {
+                visited[i] = false;
             }
+        }
+        int dfs(int s, int d) {
+
+            xstack stack;
+            initVisited();
+            visited[s] = true;
+            stack.push(s);
+
+            while(stack.isEmpty() == false) {
+                s = stack.gettop();
+                stack.pop();
+                if (s == d) {
+                    //found
+                    return 1;
+                }
+
+                //iterator 로 만드는 것 고민 중: https://colorscripter.com/s/fFvQWh4
+                for(node *i = adj[s].front(); i != nullptr; i=i->next) {
+                    if (visited[i->v] == false) {
+                        visited[i->v] = true;
+                        stack.push(i->v);
+                    }
+                }
+            }
+            return 0;
         }
     private:
         int cntV;
@@ -165,9 +193,25 @@ void test() {
 }
 
 void solve() {
+    int tc, pair;
+    int v, w;
+    int ans;
+    graph g(100);
+
+    scanf("%d %d", &tc, &pair);
+    for(int i=0; i<pair; ++i) {
+        scanf("%d %d", &v, &w);
+        g.addEdge(v, w);
+    }
+    ans = g.dfs(0, 99);
+
+    printf("#%d %d\n", tc, ans);
 }
 
 int main() {
-    test();
+    freopen("05_1219_input.txt", "r", stdin);
+    for (int i=0; i<10; ++i) {
+        solve();
+    }
     return 0;
 }

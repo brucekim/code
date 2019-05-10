@@ -12,6 +12,8 @@ inline void swap(int &a, int&b) {
 
 int partition(int arr[], int low, int high) {
     int i = low-1;
+    int mid = low + (high-low)/2;
+    swap(arr[mid], arr[high]);
     int pivot = arr[high];
     for (int j=low; j<high; ++j) {
         if (arr[j] < pivot) {
@@ -49,17 +51,21 @@ void solve() {
     int arr[N_MAX] = {0};
     int n;
     int t;
+
     scanf("%d", &n);
     for(int i=0; i<n; ++i) {
         scanf("%d", &t);
         arr[i] = t;
     }
-
     quick_sort(arr, 0, n-1);
+    for(int i=0; i<n; ++i) {
+        printf("%d\n", arr[i]);
+    }
 }
 
 int main() {
-    test();
-    //solve();
+    //test();
+    freopen("inputs/acmicpc_2751_input.txt", "r", stdin);
+    solve();
     return 0;
 }

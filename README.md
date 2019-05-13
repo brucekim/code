@@ -18,6 +18,11 @@ keybindings.json
 ]
 
 to do
-* 2019.05.12 -> swe_stack_1224_calc_03
+* 2019.05.14
+    * acmicpc_14502_virus_in_lab
+    * swe_pretest_1953_prison_break
+    * swe_pretest_1949_mt_road
+    * acmicpc_7569_tomato_02_dfsbfs
+    * acmicpc_9663_nqueen_backtracking
 
 ```

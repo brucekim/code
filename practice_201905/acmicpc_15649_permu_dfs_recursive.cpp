@@ -149,6 +149,7 @@ class permu {
                     printf("%d ", *it);
                 }
                 printf("\n");
+                return;
             }
 
             for(int i=1; i<=n; ++i) {

@@ -39,4 +39,6 @@ dfs 순열 기초 연습
     * acmicpc 15652 - 중복조합 (nHr)
     * acmicpc 15657
     * acmicpc 15666
+bitmasking
+    * acmicpc 1182
 ```

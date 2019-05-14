@@ -80,6 +80,8 @@ class xlist {
                 tail = tail->prev;
                 if (tail != nullptr) {
                     tail->next = nullptr;
+                } else {
+                    head = nullptr;
                 }
                 delete tmp;
                 --sz;
@@ -102,6 +104,8 @@ class xlist {
                 head = head->next;
                 if (head != nullptr) {
                     head->prev = nullptr;
+                } else {
+                    tail = nullptr;
                 }
                 delete tmp;
                 --sz;

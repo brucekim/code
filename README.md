@@ -16,6 +16,7 @@ keybindings.json
         "command": "workbench.action.tasks.test"
     }
 ]
+```
 
 to do
 * 2019.05.14
@@ -27,10 +28,10 @@ to do
 
 * 2019.05.15
 dfs 순열 기초 연습
-    * acmicpc 15649 - 순열 (nPr)
-    * acmicpc 10974 - 순열
-    * acmicpc 15654 - 순열
-    * acmicpc 15663 - 순열 (중복처리)
+    * acmicpc 15649 c - 순열 (nPr)
+    * acmicpc 10974 c - 순열
+    * acmicpc 15654 c - 순열
+    * acmicpc 15663 o - 순열 (중복처리)
     * acmicpc 15650 - 조합(nCr)
     * acmicpc 15655
     * acmicpc 15664
@@ -42,4 +43,5 @@ dfs 순열 기초 연습
     * acmicpc 15666
 bitmasking
     * acmicpc 1182
-```
+circular queue - array
+

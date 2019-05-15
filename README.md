@@ -44,4 +44,13 @@ dfs 순열 기초 연습
 bitmasking
     * acmicpc 1182
 circular queue - array
-
+graph
+    * dijkstra
+    * mst - kruskal
+    * mst - prim
+    * circle detection
+tree
+    * bst
+    * balance
+swea
+    * mountail

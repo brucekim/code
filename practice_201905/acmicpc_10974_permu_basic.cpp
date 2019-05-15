@@ -13,7 +13,7 @@ class xstack {
     }
     int top() {
         if (sz > 0) {
-            return arr[0];
+            return arr[sz-1];
         } else {
             return const_err_code;
         }

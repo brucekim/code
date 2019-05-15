@@ -269,7 +269,8 @@ void solve() {
     }
 
     /* scanning candidate walls and coord of virus */
-    ///* 1nd: wrong approach to identify candidate walls 
+    /* 1nd: wrong approach to identify candidate walls 
+    fail
     for (int i = 0; i < n; ++i) {
         for (int j = 0; j < m; ++j) {
             if (arr[i][j] == const_empty) {
@@ -287,9 +288,10 @@ void solve() {
             }
         }
     }
-    //*/
+    */
 
     /* 2nd approach - brute force
+    fail
     * nCk 35C3 = 35! / (3! * (35-3)!) = (35 * 34 * 33) / 6 -> 6545
     * fail
     for (int i = 0; i < n; ++i) {
@@ -327,9 +329,24 @@ void solve() {
     }
     */
 
+   /* 3rd approach
+   * choose all posible empty walls as candidates
+   * then find combination, not permutation, for 3 walls in the all possible candidates
+   */
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j) {
+            if (arr[i][j] == const_empty) {
+                ++sz_safezone;
+                cwalls[sz_cwalls++] = coord(i, j);
+            } else if (arr[i][j] == const_virus) {
+                viruses[sz_viruses++] = coord(i, j);
+            }
+        }
+    }
+
     // coord of viruses
     std::cout << "viruses.. " << std::endl;
-    for (int i=0; i<sz_viruses; ++i) {
+    for (int i = 0; i < sz_viruses; ++i) {
         std::cout << viruses[i].tostring() << std::endl;
     }
     // candidate of walls to be constructed
@@ -337,6 +354,7 @@ void solve() {
     for (int i=0; i<sz_cwalls; ++i) {
         std::cout << cwalls[i].tostring() << std::endl;
     }
+    return;
     
     // get permutation of 3-walls candidates to try
     lab.dfs(cwalls, sz_cwalls);

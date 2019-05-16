@@ -19,14 +19,7 @@ keybindings.json
 ```
 
 to do
-* 2019.05.14
-    * acmicpc_14502_virus_in_lab
-    * swe_pretest_1953_prison_break
-    * swe_pretest_1949_mt_road
-    * acmicpc_7569_tomato_02_dfsbfs
-    * acmicpc_9663_nqueen_backtracking
 
-* 2019.05.15
 dfs 순열 기초 연습
     * acmicpc 15649 c - 순열 (nPr)
     * acmicpc 10974 c - 순열
@@ -54,3 +47,16 @@ tree
     * balance
 swea
     * mountail
+
+empty file
+    * acmicpc_7569_tomato_02_dfsbfs.cpp
+    * acmicpc_9663_nqueen_backtracking.cpp
+    * swe_pretest_1953_prison_break.cpp
+    * acmicpc_15663_permu_input_canBduplicated.cpp
+
+not yet pass
+    * acmicpc_14502_virus_in_lab
+
+for tomorrow
+    * acmicpc 15650 조합 + 15663 (순열 중복처리)
+    * swea 1953 prision break

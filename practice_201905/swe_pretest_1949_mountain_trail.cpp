@@ -17,13 +17,13 @@ struct coord {
 template <typename T>
 class xstack {
     public:
-    xstack(int _capa) : capa(_capa), sz(0) {
+    xstack(int _capa=const_max_depth) : capa(_capa), sz(0) {
         arr = new coord[capa]();
     }
     virtual ~xstack() {
         delete[] arr;
     }
-    void push_back (coord &c) {
+    void push_back (T &&c) {
         if (sz < capa) {
             arr[sz++] = c;
         }
@@ -33,7 +33,7 @@ class xstack {
             --sz;
         }
     }
-    coord &top() {
+    T &top() {
         return arr[sz-1];
     }
     bool isEmpty() {
@@ -53,11 +53,40 @@ class xstack {
     T *arr;
 };
 
+class solver {
+    public:
+        solver(int _n, int _k, int (*_arr)[const_max_n], xstack<coord> *_st) :
+            n(_n), k(_k), arr(_arr), st(_st) {}
+        void print() {
+            printf("map:\n");
+            for (int i=0; i<n; ++i) {
+                for (int j=0; j<n; ++j) {
+                    printf("%d ", arr[i][j]);
+                }
+                printf("\n");
+            }
+            printf("highest::\n");
+            for(int i=0; i<st->getSize(); ++i) {
+                printf("(%d %d)", (*st)[i].x, (*st)[i].y);
+            }
+            printf("\n");
+        }
+        void dfs() {
+            for 
+        }
+    private:
+        int n, k;
+        int (*arr)[const_max_n];
+        xstack<coord> *st;
+};
+
 void solve() {
     int ans = 0;
     int n, k;
-    int arr[const_max_n][const_max_k]{0};
+    int arr[const_max_n][const_max_n]{0};
     int highest = -1;
+    int max_trail = -1;
+    xstack<coord> st;
 
     // input
     scanf("%d %d", &n, &k);
@@ -74,11 +103,13 @@ void solve() {
 
     for (int i=0; i<n; ++i) {
         for (int j=0; j<n; ++j) {
-            if (arr[i])
+            if (arr[i][j] == highest) {
+                st.push_back(coord(i, j));
+            }
         }
-        printf("\n");
     }
-    //printf("%d\n", ans);
+    solver sol(n, k, arr, &st);
+    sol.print();
 }
 int main() {
     int t;

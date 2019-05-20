@@ -21,12 +21,12 @@ keybindings.json
 to do
 
 dfs 순열 기초 연습
-  * acmicpc 15649 c - 순열 (nPr)
+  * acmicpc 15649 c - 순열 (nPr) N과 M(1)
   * acmicpc 10974 c - 순열
-  * acmicpc 15654 c - 순열
-  * acmicpc 15663 o - 순열 (중복처리)
-  * acmicpc 15650 o - 조합(nCr)
-  * acmicpc 15655 o
+  * acmicpc 15654 c - 순열 N과 M(5)
+  * acmicpc 15663 c - 순열 (중복처리) N과 M(9)
+  * acmicpc 15650 c - 조합(nCr) N과 M(2)
+  * acmicpc 15655 c - N과 M(6)
   * acmicpc 15664
   * acmicpc 15651 - 중복순열 (nπr)
   * acmicpc 15656
@@ -34,6 +34,7 @@ dfs 순열 기초 연습
   * acmicpc 15652 - 중복조합 (nHr)
   * acmicpc 15657
   * acmicpc 15666
+  * amcicpc 1182 c 부분수열의 합
 bitmasking
   * acmicpc 1182
 circular queue - array

@@ -25,8 +25,8 @@ dfs 순열 기초 연습
   * acmicpc 10974 c - 순열
   * acmicpc 15654 c - 순열
   * acmicpc 15663 o - 순열 (중복처리)
-  * acmicpc 15650 - 조합(nCr)
-  * acmicpc 15655
+  * acmicpc 15650 o - 조합(nCr)
+  * acmicpc 15655 o
   * acmicpc 15664
   * acmicpc 15651 - 중복순열 (nπr)
   * acmicpc 15656

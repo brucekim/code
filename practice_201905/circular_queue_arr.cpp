@@ -77,27 +77,37 @@ class cqueue {
 };
 
 void test() {
-    cqueue<int> cq(5);
+    cqueue<int> cq(3);
+    cq.enq(1);
+    cq.print();
+    cq.enq(2);
+    cq.print();
+    cq.enq(3);
+    cq.print();
+    cq.enq(4);
+    cq.print();
+
+    cq.deq();
+    cq.print();
+    cq.enq(5);
+    cq.print();
+    cq.enq(6);
+    cq.print();
+
+    cq.deq();
+    cq.print();
+    cq.enq(7);
+    cq.print();
+    cq.enq(8);
+    cq.print();
+
+    cq.deq();
+    cq.print();
+    cq.enq(9);
+    cq.print();
     cq.enq(10);
     cq.print();
-    cq.enq(20);
-    cq.print();
-    cq.enq(30);
-    cq.print();
-    cq.enq(40);
-    cq.print();
-    cq.enq(50);
-    cq.print();
-    cq.enq(60);
-    cq.print();
-    cq.deq();
-    cq.print();
-    cq.deq();
-    cq.print();
-    cq.enq(70);
-    cq.print();
-    cq.enq(80);
-    cq.print();
+
 }
 
 int main() {

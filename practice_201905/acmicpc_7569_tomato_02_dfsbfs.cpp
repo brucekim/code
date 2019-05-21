@@ -1,3 +1,5 @@
+/* 3d array on 1d array: how-to 
+https://stackoverflow.com/questions/7367770/how-to-flatten-or-index-3d-array-in-1d-array*/
 #include <cstdio>
 
 //#define DBG

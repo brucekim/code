@@ -35,14 +35,12 @@ dfs 순열 기초 연습
   * acmicpc 15657
   * acmicpc 15666
   * amcicpc 1182 c 부분수열의 합
-bitmasking
-  * acmicpc 1182
 circular queue - array
 graph
   * dijkstra
   * mst - kruskal
   * mst - prim
-  * circle detection
+  * cycle detection
 tree
   * bst
   * balance
@@ -52,12 +50,24 @@ swea
 empty file
   * acmicpc_7569_tomato_02_dfsbfs.cpp
   * acmicpc_9663_nqueen_backtracking.cpp
-  * swe_pretest_1953_prison_break.cpp
-  * acmicpc_15663_permu_input_canBduplicated.cpp
 
 not yet pass
   * acmicpc_14502_virus_in_lab
 
-for tomorrow
-  * acmicpc 15650 조합 + 15663 (순열 중복처리)
-  * swea 1953 prision break
+tomorrow
+  * swea 2112 protection film ...ing
+  * swea 1770 assemble block part
+  * swea 2117 home security system
+
+  * dijkstra - acmicpc 1753
+  * mirror 문제 - acmicpc 2178
+  * Knapsack - acmicpc 11914, 12865, 12920
+
+  * hash - acmicpc 1920
+
+  * set
+  * bst basic
+  * lru pq
+  * ddd memoization
+  * ddd backtracking
+  * 외판원 순회 - acmicpc

@@ -15,7 +15,8 @@
  */
 #include <cstdio>
 
-#define DBG
+//#define DBG_STDIN
+//#define DBG
 
 #ifdef DBG
 #define dbg(fmt, ...) printf(fmt, ##__VA_ARGS__)
@@ -33,35 +34,76 @@ struct vertex {
 };
 
 template <typename T>
+struct node {
+    node(T &_data) : data(_data), next(nullptr) {}
+    T data;
+    node<T> *next;
+};
+
+template <typename T>
+class xlist_iterator {
+    public:
+    xlist_iterator(node<T> *it) : current(it) {}
+    T& operator*() {
+        return current->data;
+    }
+    xlist_iterator& operator++() {
+        current = current->next;
+        return *this;
+    }
+    bool operator==(const xlist_iterator<T>& it) const {
+        return current == it.current;
+    }
+    bool operator!=(const xlist_iterator<T>& it) const {
+        return current != it.current;
+    }
+    private:
+    node<T> *current;
+};
+
+template <typename T>
 class xlist {
     public:
-        xlist() : capa(const_max_sz), sz(0) {
-            arr = new T[capa]();
-        }
+        using iterator = xlist_iterator<T>;
+        xlist() : sz(0), head(nullptr), tail(nullptr) {}
         virtual ~xlist() {
-            delete[] arr;
-        }
-        int push_back(T data) {
-            if (sz < capa) {
-                arr[sz++] = data;
-                return 0;
-            } else {
-                return const_err_code;
+            while(head != nullptr) {
+                node<T> *tmp = head;
+                head = head->next;
+                delete tmp;
             }
         }
+        iterator begin() {
+            return xlist_iterator<T>(head);
+        }
+        iterator end() {
+            return xlist_iterator<T>(nullptr);
+        }
+        int push_back(T data) {
+            node<T> *tmp = new node<T>(data);
+            ++sz;
+            if (head == nullptr) {
+                head = tail = tmp;
+            } else {
+                tail->next = tmp;
+                tail = tmp;
+            }
+            return 0;
+       }
         int getSize() {
             return sz;
+        }
+        node<T> *getHead() {
+            return head;
         }
         bool isEmpty() {
             return sz == 0;
         }
-        T& operator[] (int idx) {
-            return arr[idx];
-        }
 
     private:
-        T *arr;
-        int capa, sz;
+        int sz;
+        node<T> *head;
+        node<T> *tail;
 };
 
 // adjacent graph
@@ -123,7 +165,7 @@ class solver {
             dist[s] = 0;
 
             //for all vertexes
-            for(int cnt=0; cnt<cntV; ++cnt) {
+            for(int cnt=0; cnt<cntV-1; ++cnt) {
                 //pick a vertex that has min edge in sptSet
                 int u = getMinimumEdge();
                 if (u == -1) {
@@ -132,9 +174,11 @@ class solver {
                 sptSet[u] = true;
                 dbg("pick %d as min and insert to sptSet\n", u);
                 //traverse all adjacent nodes of the vertex picked
-                for(int i=0; i<g[u].getSize(); ++i) {
-                    int v = g[u][i].v;
-                    int w = g[u][i].w;
+                xlist<vertex>::iterator _end  = g[u].end();
+                xlist<vertex>::iterator it = g[u].begin();
+                for(; it != _end; ++it) {
+                    int v = (*it).v;
+                    int w = (*it).w;
                     dbg("search neighbor %d .. dist[%d]=%d, w=%d <? dist[%d]=%d\n", v, u, dist[u], w, v, dist[v]);
                     if (sptSet[v] == false && dist[u] != INF && dist[u] + w < dist[v]) {
                         dist[v] = dist[u] + w;
@@ -159,20 +203,20 @@ class solver {
         void info() {
             printf("info.. V:%d E:%d k:%d\n", cntV, cntE, k);
             for(int i=1; i<=cntV; ++i) {
-                printf("%d -> ", i);
-                for(int j=0; j<g[i].getSize(); ++j) {
-                    printf("%d(%d) ", g[i][j].v, g[i][j].w);
+                printf("%d(sz:%d) -> ", i, g[i].getSize());
+                xlist<vertex>::iterator _end = g[i].end();
+                for(xlist<vertex>::iterator it = g[i].begin(); it != _end; ++it) {
+                    printf("%d(%d) ", (*it).v, (*it).w);
                 }
-                printf("\n");
+               printf("\n");
             }
         }
         void printspt() {
-            printf("spt...\n");
             for (int i=1; i<=cntV; ++i) {
                 if (dist[i] == INF) {
-                    printf("%d - INF\n", i);
+                    printf("INF\n");
                 } else {
-                    printf("%d - %d\n", i, dist[i]);
+                    printf("%d\n", dist[i]);
                 }
             }
         }
@@ -189,7 +233,7 @@ void solve() {
 }
 
 int main() {
-#ifdef DBG
+#ifdef DBG_STDIN
     freopen("inputs/acmicpc_1753_input.txt", "r", stdin);
 #endif
     solve();

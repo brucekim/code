@@ -31,9 +31,8 @@ dfs 순열 기초 연습
   * acmicpc 15664 c - N, M(10)
   * acmicpc 15652 c - N, M(4) 중복조합 (nHr)
   * acmicpc 15657 c - N, M(8)
-  * acmicpc 15666 - N, M(12)
-  * acmicpc 15665 - N, M(11)
-
+  * acmicpc 15666 - N, M(12) - hash
+  * acmicpc 15665 - N, M(11) - hash
   * acmicpc 10974 c - 순열
   * amcicpc 1182 c 부분수열의 합
 
@@ -49,19 +48,13 @@ tree
   * bst
   * balance
 
-empty file
-  * acmicpc_9663_nqueen_backtracking.cpp
-
-tomorrow
+backlogs
   * swea 2112 protection film ...ing
   * swea 1770 assemble block part
   * swea 2117 home security system
-
-  * mirror 문제 - acmicpc 2178
+  * acmicpc_9663_nqueen_backtracking.cpp
   * Knapsack - acmicpc 11914, 12865, 12920
-
   * hash - acmicpc 1920
-
   * set
   * bst basic
   * lru pq
@@ -70,6 +63,14 @@ tomorrow
   * 외판원 순회 - acmicpc
   * d.p
 
+to do
   * dijkstra - acmicpc 1753 tle priority queue
   * dijkstra - acmicpc 1916 break at once
+  * acmicpc 11047 - 동전 0, dp
+  * acmicpc 2293 - 동전 1, dp
+  * acmicpc 2294 - 동전 2, dp
+  * acmicpc 12865 - 평범한 배낭 1, dp
+  * acmicpc 12920 - 평범한 배낭 2, dp
+  * queue,stack -> linked list 로 연습 (qq to stack, ss to q)
+  * swea listup..
 

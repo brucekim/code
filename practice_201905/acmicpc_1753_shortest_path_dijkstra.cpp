@@ -22,7 +22,7 @@
 #include <cstdio>
 
 #define DBG_STDIN
-//#define DBG
+#define DBG
 
 #ifdef DBG
 #define dbg(fmt, ...) printf(fmt, ##__VA_ARGS__)
@@ -30,7 +30,7 @@
 #define dbg(fmt, ...)
 #endif
 
-const static int const_max_sz = 20001;
+const static int const_max_sz = 300001;
 const static int const_err_code = 0x3f3f3f3f;
 const static int INF = 0x7FFFFFFF;
 

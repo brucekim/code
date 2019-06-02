@@ -74,3 +74,11 @@ to do
   * queue,stack -> linked list 로 연습 (qq to stack, ss to q)
   * swea listup..
 
+문제 추천
+* https://www.acmicpc.net/problem/1450 냅색 문제
+* https://www.acmicpc.net/problem/4008 특공대
+* https://www.acmicpc.net/problem/17069 파이프옮기기2
+* https://www.acmicpc.net/problem/12100 2048(Easy)
+* https://www.acmicpc.net/problem/1149 RGB 거리
+* https://www.acmicpc.net/problem/1197 최소스패닝 트리
+* https://www.acmicpc.net/problem/16234 인구이동

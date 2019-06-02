@@ -1,6 +1,6 @@
 /*
 */
-#include <cstdio>
+#include <stdio.h>
 
 #define DBG_STDIN
 //#define DBG
@@ -12,7 +12,7 @@
 #endif
 
 const static int const_max_n = 50;
-const static int const_max_sz = 2502;
+const static int const_max_sz = 1000000;
 const static int const_err_code = 0x3f3f3f3f;
 const static int const_left = -1;
 const static int const_up = -1;
@@ -21,7 +21,6 @@ const static int const_down = 1;
 const static int const_non = 0;
 const static int const_empty_block = 0;
 
-// order : left(0), up(1), right(2), down(3)
 int dr[7][2] = {
     {0, 0},     //not-used
     {const_non, const_non},     //1
@@ -43,12 +42,12 @@ int dc[7][2] = {
 
 int dd[7][2] = {
     {0, 0},
-    {2, 0},
-    {1, 3},
-    {3, 2},
-    {3, 0},
-    {0, 1},
-    {2, 1},
+    {0, 2}, //1
+    {1, 3}, //2
+    {3, 2}, //3
+    {3, 0}, //4
+    {0, 1}, //5
+    {2, 1}, //6
 };
 
 //left, up, right, down
@@ -203,9 +202,11 @@ class solver{
             int cnt = rotatable[b].getSize();
             for(int i=0; i< cnt; ++i) {
                 int b2 = rotatable[b][i];
-                if (block[b2][2] == true ) {
+                if (block[b2][isconn[tmp.d]] == true && block[b2][2] == true) {
                     if (pathlen < ans) {
                         ans = pathlen;
+                        dbg("updating.. b:%d b2:%d tmp.d:%d\n", b, b2, tmp.d);
+                        dbg("update ans = %d\n", ans);
                     }
                     return;
                 }

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-//#define DBG
+#define DBG
 #define DBG_STDIN
 
 #ifdef DBG
@@ -90,7 +90,7 @@ class solver {
         }
 
     }
-    void fill(int lev, int medicine) {
+    void setfill(int lev, int medicine) {
         for(int i=0; i<w; ++i) {
             arr[idx(lev, i)] = medicine;
         }
@@ -110,6 +110,23 @@ class solver {
         dbg_msg("ans..%d\n", ans);
         return ans;
     }
+    int test() {
+        init();
+        dbg_msg("original:\n");
+        print();
+        dbg_msg("meetCriteria == %d \n", meetCriteria());
+        backup(2);
+        backup(5);
+        setfill(2, A);
+        setfill(5, B);
+        dbg_msg("set fill level 2, 5 :\n");
+        print();
+        dbg_msg("meetCriteria == %d \n", meetCriteria());
+        dbg_msg("run...");
+        run();
+
+        return 0;
+    }
     void dfs(int c) {
 #ifdef DBG
         for(int i=0; i<st.getSize(); ++i) {
@@ -123,20 +140,28 @@ class solver {
         for (int i=c; i<d; ++i) {
             if (visited[i] == false) {
                 visited[i] = true;
+                st.push_back(i);
+                dfs(i + 1);
+                st.pop_back();
+                visited[i] = false;
+
                 backup(i);
 
-                fill(i, A);
+                setfill(i, A);
+                visited[i] = true;
                 st.push_back(i);
                 dfs(i+1);
                 st.pop_back();
+                visited[i] = false;
 
-                fill(i, B);
+                setfill(i, B);
+                visited[i] = true;
                 st.push_back(i);
                 dfs(i+1);
                 st.pop_back();
+                visited[i] = false;
 
                 restore(i);
-                visited[i] = false;
             }
         }
     }
@@ -187,8 +212,9 @@ class solver {
 
 void solve(int t) {
     solver sol;
-    int ans = sol.run();
-    sol.print();
+    int ans = 0;
+    //ans = sol.run();
+    sol.test();
     
     printf("#%d %d\n", t, ans);
 }
@@ -199,7 +225,7 @@ int main() {
 #endif
     int t;
     scanf("%d", &t);
-    for (int i=0; i<t; ++i) {
+    for (int i=0; i<1; ++i) {
         solve(i+1);
     }
     return 0;

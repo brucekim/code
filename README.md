@@ -49,9 +49,7 @@ tree
   * balance
 
 backlogs
-  * swea 2112 protection film ...ing
   * swea 1770 assemble block part
-  * swea 2117 home security system
   * acmicpc_9663_nqueen_backtracking.cpp
   * Knapsack - acmicpc 11914, 12865, 12920
   * hash - acmicpc 1920
@@ -65,8 +63,10 @@ backlogs
 
 done
   * dijkstra - acmicpc 1753 tle priority queue
+  * swea 2112 protection film
 
 to do
+  * swea 2117 home security
   * dijkstra - acmicpc 1916 break at once
   * acmicpc 11047 - 동전 0, dp
   * acmicpc 2293 - 동전 1, dp

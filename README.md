@@ -63,8 +63,10 @@ backlogs
   * 외판원 순회 - acmicpc
   * d.p
 
-to do
+done
   * dijkstra - acmicpc 1753 tle priority queue
+
+to do
   * dijkstra - acmicpc 1916 break at once
   * acmicpc 11047 - 동전 0, dp
   * acmicpc 2293 - 동전 1, dp

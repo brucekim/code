@@ -26,6 +26,9 @@ const static int const_err_code = 0x3f3f3f3f;
 
 int costperk[const_max_sz_row];
 
+int dr[] = {-1, 1, 0, 0};
+int dc[] = {0, 0, -1, 1};
+
 struct coord {
     coord(int _r=0, int _c=0) : r(_r), c(_c) {}
     int r, c;
@@ -105,10 +108,17 @@ class solver {
     solver() {
         scanf("%d %d", &n, &m);
         int sz_city = n*n;
+        int tmp;
         arr = new int[sz_city];
+        visited = new int[sz_city];
+
         for(int i=0; i<n; ++i) {
             for(int j=0; j<n; ++j) {
-                scanf("%d", arr + idx(i, j));
+                scanf("%d", &tmp);
+                arr[idx(i, j)] = tmp;
+                if (tmp == 1) {
+                    q_homes.push_back(coord(i, j));
+                }
             }
         }
     }
@@ -132,17 +142,83 @@ class solver {
     inline int idx(int r, int c) {
         return r*n + c;
     }
+    void init_visited() {
+        for(int i=0; i<n; ++i) {
+            for(int j=0; j<n; ++j) {
+                visited[idx(i, j)] = 0;
+            }
+        }
+    }
 
     int run() {
         info();
-        return 0;
+        int max = 0;
+        while(!q_homes.isEmpty()) {
+            coord h = q_homes.get_front();
+            q_homes.pop_front();
+            init_visited();
+            printf("start find..(%d %d)\n", h.r, h.c);
+            xqueue<coord> q1;
+            xqueue<coord> q2;
+            int cnt = find(h, q1, q2);
+
+            if (max < cnt) {
+                max = cnt;
+            }
+        }
+        return max;
+    }
+    bool valid(int r, int c) {
+        return r >= 0 && r < n && c >= 0 && c < n;
+    }
+    int find(coord h, xqueue<coord> &q1, xqueue<coord> &q2) {
+        q1.push_back(h);
+        visited[idx(h.r, h.c)] = 1;
+        int k = 1;
+        int cnt_home_tmp = 1;
+        int cnt_home = 1;
+        while(!q1.isEmpty()) {
+
+            while(!q1.isEmpty()) {
+                coord h2 = q1.get_front();
+                q1.pop_front();
+                printf("pop (%d %d) then search neighbor..\n", h2.r, h2.c);
+                for(int i=0; i<4; ++i) {
+                    int r2 = h2.r + dr[i];
+                    int c2 = h2.c + dc[i];
+                    printf("neighbor (%d %d) \n", r2, c2);
+                    if (valid(r2, c2) == true && visited[idx(r2, c2)] == 0) {
+                        visited[idx(r2, c2)] = 1;
+                        //found home
+                        if (arr[idx(r2, c2)] == 1)  {
+                            printf("found home (%d %d) - current k=%d\n", r2, c2, k);
+                            ++cnt_home_tmp;
+                        }
+                        printf("pushback to q2 (%d %d)\n", r2, c2);
+                        q2.push_back(coord(r2, c2));
+                    }
+                }
+            }
+            //increse k;
+            ++k;
+            if ((cnt_home_tmp * m) < costperk[k]) {
+                printf("return(%d)..cost(%d] < costperk[%d]=%d\n", cnt_home, cnt_home_tmp*m, k, costperk[k]);
+                return cnt_home;
+            } else {
+                cnt_home = cnt_home_tmp;
+            }
+            while(!q2.isEmpty()) {
+                q1.push_back(q2.get_front());
+                q2.pop_front();
+            }
+        }
+        return cnt_home;
     }
     private:
     int n, m;
     int *arr;
+    int *visited;
     xqueue<coord> q_homes;
-    xqueue<coord> q1;
-    xqueue<coord> q2;
 #ifdef DBG_TIME
     meas meas_time;
 #endif
@@ -171,7 +247,7 @@ int main() {
     int t;
     scanf("%d", &t);
 #ifdef DBG_STDIN
-    t=1;
+    t=3;
 #endif
     for(int i=0; i<t; ++i) {
         solve(i+1);

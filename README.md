@@ -64,9 +64,9 @@ backlogs
 done
   * dijkstra - acmicpc 1753 tle priority queue
   * swea 2112 protection film
+  * swea 2117 home security
 
 to do
-  * swea 2117 home security
   * dijkstra - acmicpc 1916 break at once
   * acmicpc 11047 - 동전 0, dp
   * acmicpc 2293 - 동전 1, dp
@@ -75,6 +75,10 @@ to do
   * acmicpc 12920 - 평범한 배낭 2, dp
   * queue,stack -> linked list 로 연습 (qq to stack, ss to q)
   * swea listup..
+  * queue_by_stack_list.cpp
+  * stack_by_queue_arr.cpp
+  * stack_by_queue_list.cpp
+
 
 문제 추천
 * https://www.acmicpc.net/problem/1450 냅색 문제

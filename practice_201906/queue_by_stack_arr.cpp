@@ -61,10 +61,8 @@ class xqueue {
                 return const_err_code;
             } else if(st2->isEmpty() == true) {
                 moveSt1ToSt2();
-                return pop_front();
-            } else {
-                return st2->pop_back();
             }
+            return st2->pop_back();
         }
         const T& get_front() {
             if (st2->isEmpty() == true) {

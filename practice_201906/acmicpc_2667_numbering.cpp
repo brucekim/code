@@ -23,7 +23,7 @@ class xqueue {
             delete[] arr;
         }
         int push_back(T data) {
-            if ((rear == capa-1 && front == 0) || (rear == (front-1)&capa)) {
+            if ((rear == capa-1 && front == 0) || (rear == (front-1)%capa)) {
                 return const_err_code;
             } else if (front == -1) {
                 front = rear = 0;
@@ -70,7 +70,7 @@ class solver {
             group = new int[sz_max_cell];
             visited = new int[sz_max_cell];
 
-            char tmp[N+1]{0};
+            char *tmp = new char[N+1];
             for(int i=0; i<N; ++i) {
                 scanf("%s", tmp);
                 for(int j=0; j<N; ++j) {
@@ -78,6 +78,7 @@ class solver {
                     visited[idx(i, j)] = 0;
                 }
             }
+            delete[] tmp;
         }
         virtual ~solver() {
             delete[] arr;

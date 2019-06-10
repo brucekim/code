@@ -32,8 +32,8 @@ void merge(int *arr, int l, int m, int r) {
         arr[k++] = arrb[j++];
     }
 
-    delete arra;
-    delete arrb;
+    delete[] arra;
+    delete[] arrb;
 }
 
 void merge_sort(int *arr, int l, int r) {

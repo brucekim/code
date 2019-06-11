@@ -113,12 +113,11 @@ class xlist {
 };
 
 // adjacent graph
-template <typename T>
 class graph {
     public:
         void init(int _cntV) {
             cntV = _cntV;
-            adj = new xlist<T>[cntV]();
+            adj = new xlist<vertex>[cntV]();
        }
         virtual ~graph() {
             delete[] adj;
@@ -126,11 +125,11 @@ class graph {
         void addEdge(int u, int v, int w) {
             adj[u].push_back(vertex(v, w));
         }
-        xlist<T>& operator[] (int idx) {
+        xlist<vertex>& operator[] (int idx) {
             return adj[idx];
         }
     private:
-        xlist<T>* adj;
+        xlist<vertex>* adj;
         int cntV;
 };
 
@@ -340,7 +339,7 @@ class solver {
         int cntV, cntE, k;
         bool *sptSet;
         int *dist;
-        graph<vertex> g;
+        graph g;
 };
 
 void solve() {

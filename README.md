@@ -50,7 +50,6 @@ tree
 
 backlogs
   * swea 1770 assemble block part
-  * acmicpc_9663_nqueen_backtracking.cpp
   * Knapsack - acmicpc 11914, 12865, 12920
   * hash - acmicpc 1920
   * set
@@ -65,6 +64,7 @@ done
   * dijkstra - acmicpc 1753 tle priority queue
   * swea 2112 protection film
   * swea 2117 home security
+  * acmicpc_9663_nqueen_backtracking.cpp
 
 to do
   * dijkstra - acmicpc 1916 break at once
